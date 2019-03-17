@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <title>docs</title>
+    <link rel="stylesheet" href="./asset/docute.css">
+    <style>
+        .markdown-body h5 {
+            font-size: .85em;
+            color: #C43C3C;
+        }
+        .markdown-body h6 {
+            font-size: .85em;
+            color: #ff9917;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script src="./asset/docute.js"></script>
+    <script>
+    docute.init({
+        nav: [
+            {title: 'Home', path: '/'},
+            {title: '基础知识', type: 'dropdown', items: [
+                {type: 'label', title: '语言基础'},
+                {title: '函数', path: '/note/basis/func'},
+                {title: '数组', path: '/note/basis/array'},
+                {title: '字符串', path: '/note/basis/string'},
+                {title: 'cookie和storage', path: '/note/basis/cookie-storage'},
+                {title: '异步处理', path: '/note/basis/async'},
+
+                {type: 'label', title: 'DOM'},
+                {title: 'DOM操作', path: '/note/dom/dom'},
+                {title: 'DOM事件', path: '/note/dom/dom-event'},
+
+                {type: 'label', title: '计算机基础'},
+                {title: '计算机是怎样跑起来的', path: '/note/'}
+            ]},
+            {title: 'CSS3', type: 'dropdown', items: [
+                {title: 'transform', path: '/note/css3/transform'},
+                {title: 'BFC', path: '/note/css3/bfc'}
+            ]},
+            {title: 'Git', type: 'dropdown', items: [
+                {title: 'git常用命令及技巧', path: '/note/git/commonly-used'},
+                {title: 'config配置项', path: '/note/git/config'},
+                {title: 'Git版本控制管理', path: '/note/'}
+            ]},
+            {title: '网络与安全', type: 'dropdown', items: [
+                {type: 'label', title: '网络'},
+                {title: 'get和post请求的区别', path: '/note/http/get-post'},
+                {title: '从输入URL到页面加载完成的过程中都发生了什么事情？', path: '/note/http/url-render'},
+                {title: 'ajax及其优缺点', path: '/note/http/ajax'},
+                {title: '跨域及跨域的方案', path: '/note/http/cross-domain'},
+                {title: '强缓存与协商缓存', path: '/note/http/cache'},
+
+                {type: 'label', title: '安全'},
+                {title: 'CSP(内容安全策略)', path: '/note/security/csp'}
+            ]},
+            {title: '性能与兼容性', type: 'dropdown', items: [
+                {title: '基础性能知识', path: '/note/performance/performance'},
+                {title: '浏览器渲染页面的过程', path: '/note/performance/render-page'},
+                {title: '重排和重绘的概念及触发条件查看这里', path: '/note/performance/reflow-repaint'},
+                {title: '数据直出与服务端渲染的首屏优化', path: '/note/performance/ssr'},
+                {title: '兼容性', path: '/note/compatibility/compatibility'}
+            ]},
+            {title: '数学', type: 'dropdown', items: [
+                {title: '向量/矩阵', path: '/note/math/matrix'}
+            ]},
+            {title: '规范与概念', type: 'dropdown', items: [
+                {title: 'js编码规范 .eslitrc.js', path: '/note/specification/eslintrc'},
+                {title: '无障碍访问与ARIA', path: '/note/specification/aria'},
+                {title: '文档模式', path: '/note/specification/dtd'}
+            ]},
+            {title: '数据结构与算法', type: 'dropdown', items: [
+                {type: 'label', title: '数据结构'},
+                {title: '数据结构以及相关术语的概念', path: '/note/algorithm/data-structure'},
+                {title: '栈', path: '/note/algorithm/stack'},
+                {title: '队列', path: '/note/algorithm/queue'},
+                {title: '链表', path: '/note/algorithm/linked-list'},
+                {type: 'label', title: '算法'},
+                {title: '算法的时间复杂度和空间复杂度', path: '/note/algorithm/time-space'},
+            ]}
+        ],
+        icons: [{
+            icon: 'link',
+            label: 'my blog',
+            link: 'http://blog.poetries.top'
+        }],
+        tocVisibleDepth: 6
+    })
+    </script>
+</body>
+</html>
