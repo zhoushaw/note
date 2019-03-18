@@ -15,6 +15,9 @@
             font-size: .85em;
             color: #ff9917;
         }
+        .main {
+            background: #f6f6f6 url('https://s10.mogucdn.com/mlcdn/c45406/190318_5j9fig45a1b85fklle5j231845fh7_50x50.png');
+        }
     </style>
 </head>
 <body>
@@ -26,6 +29,16 @@
         nav: [
             {title: 'Home', path: '/'},
             {title: 'JavaScript', type: 'dropdown', items: [
+
+
+                {type: 'label', title: '语言基础'},
+                {title: '函数', path: '/note/basis/func'},
+                {title: '数组', path: '/note/basis/array'},
+                {title: '字符串', path: '/note/basis/string'},
+                {title: 'cookie和storage', path: '/note/basis/cookie-storage'},
+                {title: '异步处理', path: '/note/basis/async'},
+
+
                 {type: 'label', title: 'JavaScript'},
                 {title: '语法', path: '/note/JavaScript/js-note'},
                 {title: 'ES6', path: '/note/JavaScript/ES6'},
@@ -33,6 +46,13 @@
                 {title: '正则', path: '/note/JavaScript/RegExp'},
                 {title: 'TypeScript', path: '/note/JavaScript/typescript'},
 
+
+            ]},
+            {title: 'CSS', type: 'dropdown', items: [
+                {title: 'transform', path: '/note/css3/transform'},
+                {title: 'BFC', path: '/note/css3/bfc'}
+            ]},
+            {title: '前端框架', type: 'dropdown', items: [
                 {type: 'label', title: 'Vue'},
                 {title: 'Vue基础语法', path: '/note/dom/dom'},
                 {title: 'Vue-router', path: '/note/dom/dom'},
@@ -42,14 +62,10 @@
                 {title: 'React', path: '/note/'},
                 {title: 'React-router', path: '/note/'}
             ]},
-            {title: 'CSS', type: 'dropdown', items: [
-                {title: 'transform', path: '/note/css3/transform'},
-                {title: 'BFC', path: '/note/css3/bfc'}
-            ]},
             {title: '服务端', type: 'dropdown', items: [
                 {type: 'label', title: 'Node.js'},
-                {title: 'http模块', path: '/note/basis/func'},
-                {title: 'fs模块', path: '/note/basis/func'},
+                {title: 'http模块', path: '/note/node/http-module'},
+                {title: 'fs模块', path: '/note/node/fs-module'},
 
                 {type: 'label', title: '框架'},
                 {title: 'Egg.js', path: '/note/'},
