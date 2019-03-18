@@ -25,24 +25,38 @@
     docute.init({
         nav: [
             {title: 'Home', path: '/'},
-            {title: '基础知识', type: 'dropdown', items: [
-                {type: 'label', title: '语言基础'},
-                {title: '函数', path: '/note/basis/func'},
-                {title: '数组', path: '/note/basis/array'},
-                {title: '字符串', path: '/note/basis/string'},
-                {title: 'cookie和storage', path: '/note/basis/cookie-storage'},
-                {title: '异步处理', path: '/note/basis/async'},
+            {title: 'JavaScript', type: 'dropdown', items: [
+                {type: 'label', title: 'JavaScript'},
+                {title: '语法', path: '/note/JavaScript/js-note'},
+                {title: 'ES6', path: '/note/JavaScript/ES6'},
+                {title: 'CORS', path: '/note/JavaScript/CORS'},
+                {title: '正则', path: '/note/JavaScript/RegExp'},
+                {title: 'TypeScript', path: '/note/JavaScript/typescript'},
 
-                {type: 'label', title: 'DOM'},
-                {title: 'DOM操作', path: '/note/dom/dom'},
-                {title: 'DOM事件', path: '/note/dom/dom-event'},
+                {type: 'label', title: 'Vue'},
+                {title: 'Vue基础语法', path: '/note/dom/dom'},
+                {title: 'Vue-router', path: '/note/dom/dom'},
+                {title: 'Vuex', path: '/note/dom/dom-event'},
 
-                {type: 'label', title: '计算机基础'},
-                {title: '计算机是怎样跑起来的', path: '/note/'}
+                {type: 'label', title: 'React'},
+                {title: 'React', path: '/note/'},
+                {title: 'React-router', path: '/note/'}
             ]},
-            {title: 'CSS3', type: 'dropdown', items: [
+            {title: 'CSS', type: 'dropdown', items: [
                 {title: 'transform', path: '/note/css3/transform'},
                 {title: 'BFC', path: '/note/css3/bfc'}
+            ]},
+            {title: '服务端', type: 'dropdown', items: [
+                {type: 'label', title: 'Node.js'},
+                {title: 'http模块', path: '/note/basis/func'},
+                {title: 'fs模块', path: '/note/basis/func'},
+
+                {type: 'label', title: '框架'},
+                {title: 'Egg.js', path: '/note/'},
+
+                {type: 'label', title: '数据库'},
+                {title: 'mysql基础语法', path: '/note/dom/dom'}
+
             ]},
             {title: 'Git', type: 'dropdown', items: [
                 {title: 'git常用命令及技巧', path: '/note/git/commonly-used'},
@@ -67,23 +81,6 @@
                 {title: '数据直出与服务端渲染的首屏优化', path: '/note/performance/ssr'},
                 {title: '兼容性', path: '/note/compatibility/compatibility'}
             ]},
-            {title: '数学', type: 'dropdown', items: [
-                {title: '向量/矩阵', path: '/note/math/matrix'}
-            ]},
-            {title: '规范与概念', type: 'dropdown', items: [
-                {title: 'js编码规范 .eslitrc.js', path: '/note/specification/eslintrc'},
-                {title: '无障碍访问与ARIA', path: '/note/specification/aria'},
-                {title: '文档模式', path: '/note/specification/dtd'}
-            ]},
-            {title: '数据结构与算法', type: 'dropdown', items: [
-                {type: 'label', title: '数据结构'},
-                {title: '数据结构以及相关术语的概念', path: '/note/algorithm/data-structure'},
-                {title: '栈', path: '/note/algorithm/stack'},
-                {title: '队列', path: '/note/algorithm/queue'},
-                {title: '链表', path: '/note/algorithm/linked-list'},
-                {type: 'label', title: '算法'},
-                {title: '算法的时间复杂度和空间复杂度', path: '/note/algorithm/time-space'},
-            ]},
             {title: '数据结构与算法', type: 'dropdown', items: [
                 {type: 'label', title: '数据结构'},
                 {title: '数据结构以及相关术语的概念', path: '/note/algorithm/data-structure'},
@@ -97,7 +94,7 @@
         icons: [{
             icon: 'link',
             label: 'my blog',
-            link: 'http://blog.poetries.top'
+            link: 'http://zhoushaw.github.io'
         }],
         tocVisibleDepth: 6
     })
