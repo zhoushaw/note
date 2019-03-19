@@ -1,11 +1,3 @@
----
-title: sequelize基础
-date: 2018-10-15 16:14
-tags: sequelize
-categories: node
----
-
-
 ## sequelize简介
 
 sequelize是Node的ORM框架，用于操作mysql数据库
