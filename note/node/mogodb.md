@@ -1,13 +1,3 @@
----
-title: mongodb使用
-date: 2017-08-9 8:52:35
-tags: mongodb
-categories: js
----
-
-
-<div><!-- more--></div>
-
 ## 安装
 
 [菜鸟教程](http://www.runoob.com/mongodb/mongodb-osx-install.html)
