@@ -1,12 +1,3 @@
----
-title: javascript
-date: 2017-07-13 8:07:0
-tags: js
-categories: js
----
-
-
-<div><!-- more--></div>
 ## javascript认识
 注释:
 js:1.单行注释//

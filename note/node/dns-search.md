@@ -1,11 +1,3 @@
----
-title: node查询ip
-date: 2018-10-28 16:14
-tags: dns
-categories: node
----
-
-
 ## 查询ip
 
 > 比如我们要查询域名 www.qq.com 对应的ip，可以通过 dns.lookup() 

@@ -1,12 +1,3 @@
----
-title: mysql入门
-date: 2018-12-27 16:14
-tags: node
-categories: node
----
-
-
-
 ## 启动
 > 命令行启动
 

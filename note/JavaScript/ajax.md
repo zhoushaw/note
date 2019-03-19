@@ -1,14 +1,3 @@
----
-title: ajax知识梳理
-date: 2017-5-1 6:52:35
-categories: js
-tags: ajax
----
-
-<div><!--more--></div>
-
-
-
 ### 搭配环境
 
 服务器工具:

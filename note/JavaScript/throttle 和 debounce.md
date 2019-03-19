@@ -1,10 +1,4 @@
----
-title: throttle 和 debounce
-date: 2018-10-23 8:07:0
-tags: js
-categories: js
----
-
+## 前言
 > throttle 和 debounce是控制频率的高阶函数，返回一个包装后的匿名函数
 
 在实际工作中的很多场景下都会使用到这两个高阶函数，并且在javascript中利用了闭包这一特性。下面对这两个函数进行详细讲解
@@ -13,7 +7,6 @@ categories: js
 * resize 重新计算样式布局   --debounce
 * input输入停止1s时，获取ajax请求     --debounce
 * scroll 计算当前是否大于固定值，显示头部   --throttle
-<div><!-- more--></div>
 
 
 ## throttle

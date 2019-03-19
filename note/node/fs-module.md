@@ -1,13 +1,3 @@
----
-title: node-fs模块
-date: 2018-11-27 16:14
-tags: fs
-categories: node
----
-
-
-<div><!-- more--></div>
-
 
 ## 文件读取
 

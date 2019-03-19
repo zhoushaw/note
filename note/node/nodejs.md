@@ -1,11 +1,3 @@
-title: nodejs基础知识
-date: 2017-8-6 6:52:35
-categories: js
-tags: nodejs
----
-
-<div><!--more--></div>
-
 ##nodejs与js
 
 在ECMAScript部分node和js其实是一样的，比如数据类型的定义语法结构，内置对象

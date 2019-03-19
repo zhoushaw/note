@@ -1,13 +1,3 @@
----
-title: typescript
-date: 2018-6-9 4:36:35
-categories: js
-tags:   js
----
-
-
-<div><!--more--></div>
-
 ## 起步
 
 > compile

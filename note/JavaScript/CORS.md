@@ -1,11 +1,3 @@
----
-title: http
-date: 2018-09-30 8:07:12
-tags: http
-categories: learning
----
-
-
 ## 同源策略
 
 在了解跨域问题前，先对同源策略进行一个回顾

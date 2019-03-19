@@ -1,13 +1,3 @@
----
-title: jQuery
-date: 2017-07-25 7:28:35
-tags: jQuery
-categories: js
----
-
-
-<div><!-- more--></div>
-
 ## jQuery简介
 
 $()方法产生的jQuery对象，不管也不论找没找到，找到了几个，得到的都是一个类数组对象，只是length值不同而已

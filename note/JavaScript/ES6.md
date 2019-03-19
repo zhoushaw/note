@@ -1,13 +1,3 @@
----
-title: ES6
-date: 2018-2-1 4:36:35
-categories: js
-tags: 
-- js
-- aes
----
-
-
 <div><!--more--></div>
 
 ## let、const

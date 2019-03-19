@@ -1,13 +1,3 @@
----
-title: web安全
-date: 2018-05-15 11:07:35
-tags: 安全
-categories: js
----
-
-
-<div><!-- more--></div>
-
 ##csp
 
 > 简介
