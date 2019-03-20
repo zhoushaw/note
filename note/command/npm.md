@@ -51,3 +51,23 @@ registry=https://registry.npm.taobao.org
 
 
 
+## 本地调试npm包
+
+
+<p class="tip">在开发npm包的过程中，难免会发生问题，每次更改测试都需要重新publish十分麻烦，可以通过将npm包直接link到项目中，解决完bug后，再publish无疑是十分高效的处理方法</p>
+
+
+使用：
+
+```
+npm link (in package dir)
+npm link [<@scope>/]<pkg>[@<version>]
+```
+
+当完成npm包调试后，
+
+
+```
+npm unlink
+```
+
