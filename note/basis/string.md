@@ -48,6 +48,25 @@ var str = `abc`
 
 ###### str.slice()
 ###### str.substr()
+
+> 描述
+
+从指定字符串中返回，指定开始到指定结束位置的字符串内容。从下标0开始截取
+
+> 接收参数
+
+
+```
+str.substr(start[, length])
+```
+
+`start`
+开始提取字符的位置。如果为负值，则被看作 strLength + start，其中 strLength 为字符串的长度（例如，如果 start 为 -3，则被看作 strLength + (-3)）。
+
+`length`
+可选。提取的字符数。不传默认至最后一位
+
+
 ###### str.substring()
 ```
 描述：上面三个方法都能基于已有字符串创建新字符串，但不会影响原字符串。
