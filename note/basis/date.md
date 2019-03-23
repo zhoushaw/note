@@ -56,3 +56,7 @@ let day = Date.getSeconds();
 let Date = new Date(); // 获取当前时间
 let millSeconds = Date.setMilliseconds();
 ```
+
+## 二、使用场景
+
+#### 倒计时
