@@ -21,11 +21,23 @@ bullet-train
 2.
 
 ```
+## project path
+alias meili="cd ~/Desktop/meili"
 alias learn="cd ~/Desktop/learning"
-alias mlj="cd ~/Desktop/meili/mgj-pay-meilijie"
+alias note="cd ~/Desktop/learning/note"
 alias ml="cd ~/Desktop/meili"
-alias mljms="cd ~/Desktop/meili/mgj-pay-meilijie-mashang"
-alias mysql='/usr/local/mysql/bin/mysql'
+alias blog="/Users/shawzhou/Desktop/learning/blog"
+alias docs="/Users/shawzhou/Desktop/meili/docs"
+
+
+# git command
+alias gm="git commit -am"
+alias gp="git push"
+alias gn="git commit -n -am"
+
+# task
+#alias mysql='/usr/local/mysql/bin/mysql'
+alias mysqluse="mysql -u root -p"
 alias code='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'
 ```
 
