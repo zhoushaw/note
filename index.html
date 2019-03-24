@@ -27,7 +27,6 @@
     <script>
     docute.init({
         nav: [
-            {title: 'Home', path: '/'},
             {title: 'JavaScript', type: 'dropdown', items: [
                 {type: 'label', title: '语言基础'},
                 {title: '函数', path: '/note/basis/func'},
@@ -43,7 +42,7 @@
                 {title: '正则', path: '/note/JavaScript/RegExp'},
                 {title: 'TypeScript', path: '/note/JavaScript/typescript'},
             ]},
-            {title: 'CSS', type: 'dropdown', items: [
+            {title: 'html+CSS', type: 'dropdown', items: [
                 {type: 'label', title: '语言基础'},
                 {title: 'css笔记', path: '/note/css/css-notice'},
                 {title: 'css3', path: '/note/css/css3'},
@@ -57,16 +56,24 @@
                 {type: 'label', title: 'css扩展语言'},
                 {title: 'postcss', path: '/note/css/postcss'},
                 {title: 'sass', path: '/note/css/sass'},
+
+                {type: 'label', title: 'html'},
+                {title: 'html-note', path: '/note/css/html-note'},
+                {title: 'html5', path: '/note/css/html5'},
+
             ]},
             {title: '前端框架', type: 'dropdown', items: [
                 {type: 'label', title: 'Vue'},
-                {title: 'Vue基础语法', path: '/note/dom/dom'},
-                {title: 'Vue-router', path: '/note/dom/dom'},
-                {title: 'Vuex', path: '/note/dom/dom-event'},
+                {title: 'Vue基础语法', path: '/note/vue/Vuejs'},
+                {title: 'Vue技巧', path: '/note/vue/ignore-part'},
+                {title: 'vue单元测试', path: '/note/vue/unit-test'},
 
                 {type: 'label', title: 'React'},
-                {title: 'React', path: '/note/'},
-                {title: 'React-router', path: '/note/'}
+                {title: 'React', path: '/note/react/react-grammar'},
+                {title: 'Redux', path: '/note/react/redux'},
+
+                {type: 'label', title: 'Jquery'},
+                {title: 'Jquery', path: '/note/JavaScript/jQuery笔记'},
             ]},
             {title: '服务端', type: 'dropdown', items: [
                 {type: 'label', title: 'Node.js'},
