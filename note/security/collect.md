@@ -17,6 +17,6 @@
 | [数据统计，开发平台](http://bda.mogujie.org/stark/#/?_k=ix7kzj) | [vue开发平台](http://vue.meili-inc.com/) | [stark](http://mops.mogujie.org/stark#/home?_k=9suxeo) |
 | [打点需求平台](http://wx.meili-inc.com/#/modules) | [mgj-npm](http://webnpm.f2e.mogujie.org/) | [小程序管理平台](http://wx.meili-inc.com/#/modules) |
 | [麦田同步配置平台](http://mait.mogujie.org/dev/definition/getDefinitionList.shtml)  | [node应用基础服务](http://galaxy.meili-inc.com/a/meili-node/node-doc/) | [demeter](http://mops.mogujie.org/demeter/index#/?_k=dsrbsz) |
-|  | [Iconfont](http://pc.meili-inc.com/internal-iconfont/index.html) | [前端质量保证平台](http://batman.f2e.mogujie.org/) |
-|  |  |  [代码搜索平台](http://search.meili-inc.com/)  |
+|  | [打点需求平台](http://pa.meili-inc.com/dep/demandList) | [前端质量保证平台](http://batman.f2e.mogujie.org/) |
+|  | [Iconfont](http://pc.meili-inc.com/internal-iconfont/index.html)  |  [代码搜索平台](http://search.meili-inc.com/)  |
 
