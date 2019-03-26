@@ -20,6 +20,10 @@
 * [JS Bin](https://jsbin.com/?html,css,js,console,output)
 * [JSFiddle](https://jsfiddle.net)
 
+### Vue
+
+* [Vue技术内幕](http://hcysun.me/vue-design/art/)
+
 ### react
 
 * [redux中文文档](http://cn.redux.js.org/)
@@ -29,11 +33,7 @@
 * [深入浅出react](https://github.com/mocheng/react-and-redux)
 * [react-cli](https://github.com/facebook/create-react-app)
 
-### Vue
-
-* [Vue技术内幕](http://hcysun.me/vue-design/art/)
-
-> webpack
+### webpack
 
 * [Webpack config tool](https://webpack.jakoblind.no)
 
