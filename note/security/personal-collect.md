@@ -1,12 +1,3 @@
-
-## 平台
-
-### 导购
-
-* [导购大前端](http://galaxy.mogujie.org/a/daogou-f2e/tech-docs/)
-
-
-
 ## 前端
 
 ### JavaScript
