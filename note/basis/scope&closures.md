@@ -1,6 +1,6 @@
 ## 参考来源
 
-本文是you don't know js系列的(作用域与闭包)[https://github.com/getify/You-Dont-Know-JS/tree/1ed-zh-CN/scope%20%26%20closures]笔记
+本文是you don't know js系列的 [作用域与闭包](https://github.com/getify/You-Dont-Know-JS/tree/1ed-zh-CN/scope%20%26%20closures) 笔记
 
 ## 一、作用域
 
@@ -206,3 +206,172 @@ function foo() {
 }
 ```
 
+
+## 二、闭包
+
+### 什么是闭包
+
+闭包对于大多数熟练的JavaScript也算是一个模糊不清的概念，什么事闭包呢，闭包能给我们带来什么好处和坏处？
+
+<p class="tip">简单来说可以用一句话概括闭包的特性与作用：闭包就是函数能够记住并访问它的词法作用域，即使这个函数在它的词法作用域外执行</p>
+
+> 让我们跳进代码来说明这个定义：
+
+```javascript
+function foo() {
+	var a = 2;
+
+	function bar() {
+		console.log( a ); // 2
+	}
+
+	bar();
+}
+
+foo();
+```
+
+上面的代码段被认为是函数 bar() 在函数 foo() 的作用域上有一个 闭包.换一种略有不同的说法是，bar() 闭住了 foo() 的作用域。为什么？因为 bar() 嵌套地出现在 foo() 内部。就这么简单。
+
+
+### 闭包的特性
+
+根据闭包的定义我们能很容易记住其两大特点：
+
+1、能够记住并访问它的词法作用域
+2、即使在它的作用域外执行
+
+```javascript
+function foo() {
+	var a = 2;
+
+	function bar() {
+		console.log( a );
+	}
+
+	return bar;
+}
+
+var baz = foo();
+
+baz(); // 2 -- 哇噢，看到闭包了，伙计。
+```
+
+* bar() 被执行了，必然的。但是在这个例子中，它是在它被声明的词法作用域 外部 被执行的。
+* foo() 被执行之后，一般说来我们会期望 foo() 的整个内部作用域都将消失，因为我们知道 引擎 启用了 垃圾回收器 在内存不再被使用时来回收它们。因为很显然 foo() 的内容不再被使用了，所以看起来它们很自然地应该被认为是 消失了。
+* 但是闭包的“魔法”不会让这发生。内部的作用域实际上 依然 “在使用”，因此将不会消失。谁在使用它？函数 bar() 本身。
+* 有赖于它被声明的位置，bar() 拥有一个词法作用域闭包覆盖着 foo() 的内部作用域，闭包为了能使 bar() 在以后任意的时刻可以引用这个作用域而保持它的存在。
+* bar() 依然拥有对那个作用域的引用，而这个引用称为闭包。
+
+### 闭包使用场景
+
+
+#### 无处不在的闭包
+
+```javascript
+function wait(message) {
+
+	setTimeout( function timer(){
+		console.log( message );
+	}, 1000 );
+
+}
+
+wait( "Hello, closure!" );
+```
+
+* 我们拿来一个内部函数（名为 timer）将它传递给 setTimeout(..)。但是 timer 拥有覆盖 wait(..) 的作用域的闭包，实际上保持并使用着对变量 message 的引用。
+* 在我们执行 wait(..) 一千毫秒之后，要不是内部函数 timer 依然拥有覆盖着 wait() 内部作用域的闭包，它早就会消失了。
+* 在 引擎 的内脏深处，内建的工具 setTimeout(..) 拥有一些参数的引用，可能称为 fn 或者 func 或者其他诸如此类的东西。引擎 去调用这个函数，它调用我们的内部 timer 函数，而词法作用域依然完好无损。
+
+
+#### 循环 + 闭包
+
+
+```javascript
+for (var i=1; i<=5; i++) {
+	setTimeout( function timer(){
+		console.log( i );
+	}, i*1000 );
+}
+```
+
+这段代码的精神是，我们一般将 期待 它的行为是分别打印数字“1”，“2”，……“5”，一次一个，一秒一个
+实际上，如果你运行这段代码，你会得到“6”被打印5次，一秒一个。
+
+<p class="tip">我们试图 暗示 在迭代期间，循环的每次迭代都“捕捉”一份对 i 的拷贝。但是，虽然所有这5个函数在每次循环迭代中分离地定义，由于作用域的工作方式，它们 都闭包在同一个共享的全局作用域上，而它事实上只有一个 i</p>
+
+
+如何解决这个问题呢，定义一个新的作用域，在每次迭代时持有值 i 的一个拷贝
+
+```javascript
+for (var i=1; i<=5; i++) {
+	(function(j){
+		setTimeout( function timer(){
+			console.log( j );
+		}, j*1000 );
+	})( i );
+}
+```
+
+#### 模块化
+
+```javascript
+function CoolModule() {
+	var something = "cool";
+	var another = [1, 2, 3];
+
+	function doSomething() {
+		console.log( something );
+	}
+
+	function doAnother() {
+		console.log( another.join( " ! " ) );
+	}
+
+	return {
+		doSomething: doSomething,
+		doAnother: doAnother
+	};
+}
+
+var foo = CoolModule();
+
+foo.doSomething(); // cool
+foo.doAnother(); // 1 ! 2 ! 3
+```
+
+首先，CoolModule() 只是一个函数，但它 必须被调用 才能成为一个被创建的模块实例。没有外部函数的执行，内部作用域的创建和闭包都不会发生。
+
+第二，CoolModule() 函数返回一个对象，通过对象字面量语法 { key: value, ... } 标记。这个我们返回的对象拥有指向我们内部函数的引用，但是 没有 指向我们内部数据变量的引用。我们可以将它们保持为隐藏和私有的。可以很恰当地认为这个返回值对象实质上是一个 我们模块的公有API。
+
+这个返回值对象最终被赋值给外部变量 foo，然后我们可以在这个API上访问那些属性，比如 foo.doSomething()
+
+
+#### 现代的模块
+
+<p class="tip">各种模块依赖加载器/消息机制实质上都是将这种模块定义包装进一个友好的API。与其检视任意一个特定的库，不如让我 （仅）为了说明的目的 展示一个 非常简单 的概念证明：</p>
+
+
+```javascript
+var MyModules = (function Manager() {
+	var modules = {};
+
+	function define(name, deps, impl) {
+		for (var i=0; i<deps.length; i++) {
+			deps[i] = modules[deps[i]];
+		}
+		modules[name] = impl.apply( impl, deps );
+	}
+
+	function get(name) {
+		return modules[name];
+	}
+
+	return {
+		define: define,
+		get: get
+	};
+})();
+
+```

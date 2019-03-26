@@ -231,6 +231,17 @@ console.log(arr);
 </pre>
 
 
+## 正则记忆功能
 
 
+```javascript
+let drawRuleRegExp = /\(([0-9]+)\/([0-9]+)\)\*([0-9]+)/;
+// console.log(drawRuleRegExp.test(this.detailItem.drawRule));
+'(1234567/12345)*123456'.replace(drawRuleRegExp,'$1','$2','$3');
+return {
+    addtendPerson: RegExp.$1,// 1234567
+    amount: RegExp.$2,// 12345
+    result: RegExp.$3// 123456
+};
+```
 
