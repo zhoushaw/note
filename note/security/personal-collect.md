@@ -4,7 +4,6 @@
 
 * [JavaScript 标准](http://javascript.ruanyifeng.com/#introduction)
 * [font-master](https://frontendmasters.com)
-* [JavaScript 标准](http://javascript.ruanyifeng.com/#introduction)
 * [100DaysOfCode](https://www.100daysofcode.com/)
 * [30 seconds of code](https://30secondsofcode.org)
 * [FreeCodeCamp](https://www.freecodecamp.cn/)
