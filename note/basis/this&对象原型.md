@@ -47,6 +47,13 @@ bar(); // "oops, global"
 有点:我们可以创建结构相同，但内容不同的对象
 
 
+按照本文中的分类将其分为四大块：
+
+默认绑定、隐含绑定、明确绑定、new 绑定
+
+
+
+
 ### 仅仅是规则
 
 this的最终指向可以将其分为大致四种规则
@@ -108,7 +115,7 @@ var obj1 = {
 obj1.obj2.foo(); // 42
 ```
 
-#### 隐含丢失
+##### 隐含丢失
 
 
 传递一个回调函数时：
@@ -170,3 +177,186 @@ var obj = {
 
 foo.call( obj ); // 2
 ```
+
+
+
+##### API 调用的“环境”
+
+```
+function foo(el) {
+	console.log( el, this.id );
+}
+
+var obj = {
+	id: "awesome"
+};
+
+// 使用 `obj` 作为 `this` 来调用 `foo(..)`
+[1, 2, 3].forEach( foo, obj ); // 1 awesome  2 awesome  3 awesome
+```
+
+
+#### new 绑定
+
+当使用 new 操作符来初始化一个类时，这个类的构造器就会被调用。通常看起来像这样：
+
+```
+something = new MyClass(..);
+```
+
+<p class="tip">实际上 JavaScript 的机制和 new 在 JS 中的用法所暗示的面向类的功能 没有任何联系。在 JS 中，构造器 仅仅是一个函数，它们偶然地与前置的 new 操作符一起调用。它们不依附于类，它们也不初始化一个类。它们甚至不是一种特殊的函数类型。它们本质上只是一般的函数，在被使用 new 来调用时改变了行为。</p>
+
+> 当在函数前面被加入 new 调用时，也就是构造器调用时，下面这些事情会自动完成：
+
+* 一个全新的对象会凭空创建（就是被构建）
+* 这个新构建的对象会被接入原形链（[[Prototype]]-linked）
+* 这个新构建的对象被设置为函数调用的 this 绑定
+* 除非函数返回一个它自己的其他 对象，否则这个被 new 调用的函数将 自动 返回这个新构建的对象。
+
+
+简单来说通过new方法初始化的构造器this指向函数本身
+
+```
+function foo(a) {
+	this.a = a;
+}
+
+var bar = new foo( 2 );
+console.log( bar.a ); // 2
+```
+
+
+### 一切皆有顺序
+
+
+
+<p class="tip">上面已经揭示了四种this绑定最终指向的规则，但是指向的规则可能会出现重叠的情况，当两种以上的规则出现后如何抉择优先顺序呢。</p>
+
+* 函数是通过 new 被调用的吗（new 绑定）？如果是，this 就是新构建的对象。
+   * var bar = new foo()
+* 函数是通过 call 或 apply 被调用（明确绑定），甚至是隐藏在 bind 硬绑定 之中吗？如果是，this 就是那个被明确指定的对象。
+    * var bar = foo.call( obj2 )
+* 函数是通过环境对象（也称为拥有者或容器对象）被调用的吗（隐含绑定）？如果是，this 就是那个环境对象。
+    * var bar = obj1.foo()
+* 否则，使用默认的 this（默认绑定）。如果在 strict mode 下，就是 undefined，否则是 global 对象。
+    * var bar = foo()
+
+
+### 绑定的特例
+
+正如通常的那样，对于“规则”总有一些 例外。
+
+#### 被忽略的 this
+
+<p class="tip">如果你传递 null 或 undefined 作为 call、apply 或 bind 的 this 绑定参数，那么这些值会被忽略掉，取而代之的是 默认绑定 规则将适用于这个调用。</p>
+
+```
+function foo() {
+	console.log( this.a );
+}
+
+var a = 2;
+
+foo.call( null ); // 2
+```
+
+> 更安全的 this
+
+```
+function foo(a,b) {
+	console.log( "a:" + a + ", b:" + b );
+}
+
+// 我们的 DMZ 空对象
+var ø = Object.create( null );
+
+// 将数组散开作为参数
+foo.apply( ø, [2, 3] ); // a:2, b:3
+
+// 用 `bind(..)` 进行 currying
+var bar = foo.bind( ø, 2 );
+bar( 3 ); // a:2, b:3
+```
+
+可以通过让其指向一个空对象，使其按照`硬绑定`原则进行
+
+#### 间接
+
+通过赋值
+
+```
+function foo() {
+	console.log( this.a );
+}
+
+var a = 2;
+var o = { a: 3, foo: foo };
+var p = { a: 4 };
+
+o.foo(); // 3
+(p.foo = o.foo)(); // 2
+```
+
+
+### 词法this
+
+
+> 一个箭头函数的词法绑定是不能被覆盖
+
+```
+function foo() {
+  // 返回一个箭头函数
+	return (a) => {
+    // 这里的 `this` 是词法上从 `foo()` 采用的
+		console.log( this.a );
+	};
+}
+
+var obj1 = {
+	a: 2
+};
+
+var obj2 = {
+	a: 3
+};
+
+var bar = foo.call( obj1 );
+bar.call( obj2 ); // 2, 不是3!
+```
+
+> 它们本质是使用广为人知的词法作用域来禁止了传统的 `this` 机制
+
+```
+function foo() {
+	var self = this; // 词法上捕获 `this`
+	setTimeout( function(){
+		console.log( self.a );
+	}, 100 );
+}
+
+var obj = {
+	a: 2
+};
+
+foo.call( obj ); // 2
+```
+
+## 二、对象
+
+前面我们讲解了 this 绑定如何根据函数调用的调用点指向不同的对象。但究竟什么是对象，为什么我们需要指向它们？
+
+### 语法
+
+
+<p class="tip">对象来自于两种形式：声明（字面）形式，和构造形式。</p>
+
+
+一个对象的字面语法看起来像这样：
+
+```
+var myObj = {
+	key: value
+	// ...
+};
+```
+
