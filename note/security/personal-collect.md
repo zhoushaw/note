@@ -32,6 +32,7 @@
 ### 工具
 
 * [压缩工具](https://extract.me/cn/)
+* [获取小程序源码](https://zhuanlan.zhihu.com/p/37667537)
 
 ### 算法
 
