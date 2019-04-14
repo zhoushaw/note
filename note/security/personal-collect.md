@@ -33,6 +33,7 @@
 
 * [压缩工具](https://extract.me/cn/)
 * [获取小程序源码](https://zhuanlan.zhihu.com/p/37667537)
+* [反编译微信小程序$gwx is not defined报错解决方法](https://www.yuchunlai.com/index.php/archives/33/)
 
 ### 算法
 

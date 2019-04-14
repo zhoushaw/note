@@ -39,6 +39,31 @@ var arr = ['a', 'b', 'c']
     * `{Object} context` 第二个函数参数的执行环境(this指向)
 * 返回值：生成的数组
 
+#### 数组索引
+
+<p class="tip">一个需要小心的坑是，如果一个可以被强制转换为10进制 number 的 string 值被用作键的话，它会认为你想使用 number 索引而不是一个 string 键！</p>
+
+```
+var a = [ ];
+
+a["13"] = 42;
+
+a.length; // 14
+```
+
+array 是被数字索引的（正如你所想的那样），但微妙的是它们也是对象，可以在它们上面添加 string 键/属性（但是这些属性不会计算在 array 的 length 中）：
+
+```
+var a = [ ];
+
+a[0] = 1;
+a["foobar"] = 2;
+
+a.length;		// 1
+a["foobar"];	// 2
+a.foobar;		// 2
+```
+
 ## 二、数组检测
 
 #### 使用 instanceof 操作符
