@@ -46,3 +46,14 @@ alias code='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/co
 `git config --global  core.editor vim`
 
 
+## vim
+
+* :w - 保存文件，不退出 vim
+* :w file -将修改另外保存到 file 中，不退出 vim
+* :w! -强制保存，不退出 vim
+* :wq -保存文件，退出 vim
+* :wq! -强制保存文件，退出 vim
+* :q -不保存文件，退出 vim
+* :q! -不保存文件，强制退出 vim
+* :e! -放弃所有修改，从上次保存文件开始再编辑
+
