@@ -6,19 +6,6 @@
 ## 基础知识
 
 ### 语言基础
-
-* [函数](https://zhoushaw.github.io/note/#/note/basis/func)
-* [数组](https://zhoushaw.github.io/note/#/note/basis/array)
-* [字符串](https://zhoushaw.github.io/note/#/note/basis/string)
-* [时间](https://zhoushaw.github.io/note/#/note/basis/date)
-* [DOM操作](https://zhoushaw.github.io/note/#/note/basis/dom)
-* [cookie和storage](https://zhoushaw.github.io/note/#/note/basis/cookie-storage)
-* [异步处理](https://zhoushaw.github.io/note/#/note/basis/async)
-
-### JavaScript
-
-
-### 语言基础
 * [函数](https://zhoushaw.github.io/note/#/note/basis/func)
 * [数组](https://zhoushaw.github.io/note/#/note/basis/array)
 * [字符串](https://zhoushaw.github.io/note/#/note/basis/string)
