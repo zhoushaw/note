@@ -20,6 +20,14 @@
 * [正则](https://zhoushaw.github.io/note/#/note/JavaScript/RegExp)
 * [TypeScript](https://zhoushaw.github.io/note/#/note/JavaScript/typescript)
 
+### 性能与兼容性
+
+* [基础性能知识](https://zhoushaw.github.io/note/#/note/performance/performance)
+* [浏览器渲染页面的过程](https://zhoushaw.github.io/note/#/note/performance/render-page)
+* [重排和重绘的概念及触发条件查看这里](https://zhoushaw.github.io/note/#/note/performance/reflow-repaint)
+* [数据直出与服务端渲染的首屏优化](https://zhoushaw.github.io/note/#/note/performance/ssr)
+* [兼容性](https://zhoushaw.github.io/note/#/note/compatibility/compatibility)
+
 ## html+CSS
 
 ### 语言基础
@@ -97,14 +105,6 @@
 * [iframe嵌套](https://zhoushaw.github.io/note/#/note/security/iframe嵌套)
 * [收藏](https://zhoushaw.github.io/note/#/note/security/personal-collect)
 
-
-## 性能与兼容性
-
-* [基础性能知识](https://zhoushaw.github.io/note/#/note/performance/performance)
-* [浏览器渲染页面的过程](https://zhoushaw.github.io/note/#/note/performance/render-page)
-* [重排和重绘的概念及触发条件查看这里](https://zhoushaw.github.io/note/#/note/performance/reflow-repaint)
-* [数据直出与服务端渲染的首屏优化](https://zhoushaw.github.io/note/#/note/performance/ssr)
-* [兼容性](https://zhoushaw.github.io/note/#/note/compatibility/compatibility)
 
 ## 数据结构与算法
 
