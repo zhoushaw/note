@@ -1,14 +1,3 @@
----
-title: redux
-date: 2017-07-9 7:52:35
-tags: react
-categories: js
----
-
-
-<div><!-- more--></div>
-
-
 ## 技术栈
 
 npm install react@2.0 --save-dev

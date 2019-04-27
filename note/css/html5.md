@@ -1,13 +1,3 @@
----
-title: html5
-date: 2017-07-9 7:11:00
-tags: html5
-categories: html
----
-
-
-<div><!-- more--></div>
-
 ## 常用语义标签
 
 ### 无功能标签:

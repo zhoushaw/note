@@ -1,13 +1,3 @@
----
-title: vue不易察觉的知识点
-date: 2018-03-10 11:07:35
-tags: vue
-categories: vue
----
-
-
-<div><!-- more--></div>
-
 ## refs节点获取
 
 ```

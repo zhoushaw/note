@@ -1,13 +1,3 @@
----
-title: html随笔
-date: 2017-05-23 2:44:35
-tags: html
-categories: learning
----
-
-
-<div><!-- more--></div>
-
 ## 删除线:
     1.<strike>
     2.<del>

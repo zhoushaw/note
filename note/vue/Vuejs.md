@@ -1,14 +1,3 @@
----
-title: Vue.js
-date: 2017-08-11 8:52:35
-tags: js
-categories: js
----
-
-
-<div><!-- more--></div>
-
-
 ## Vue简介
 
 vue是一个mvvm框架,

@@ -1,13 +1,3 @@
----
-title: react语法
-date: 2018-07-9 7:52:35
-tags: react
-categories: js
----
-
-
-<div><!-- more--></div>
-
 ##  起步
 
 
