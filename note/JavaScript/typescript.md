@@ -331,6 +331,7 @@ function reverse(x: number | string): number | string {
 
 
 ## 类型断言
+
 **类型断言（Type Assertion）可以用来手动指定一个值的类型。**
 语法:
 <类型>值       或       值 as 类型
