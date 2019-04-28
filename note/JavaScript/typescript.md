@@ -25,6 +25,21 @@
 * 选择tsc构建: 创建typescript构建环境
 * 选择tsc监视: 监视typescript
 
+## 命令行
+
+全局安装完`TypeScript`后，将会多出一个`tsc`命令，
+
+> 编译
+
+```
+tsc test.ts // 将会把tst.ts转变成test.js是文件
+```
+
+> 参数
+
+* `--strictNullcheck`,不可以赋值为`null
+
+
 ## 数据类型
 
 > javascript原始类型
@@ -64,11 +79,11 @@
 
 **在typescript中没有定义类型将会自动为其匹配对应的类型**
 
-## 概念
 
-> 对象的类型——接口
+### 对象的类型——接口
 
-**在面向对象语言中，接口（Interfaces）是一个很重要的概念，它是对行为的抽象，而具体如何行动需要由类（classes）去实现（implements）。**
+
+简单来说接口是对象的**描述**
 
 ```
 interface Person {
@@ -82,7 +97,7 @@ let tom: Person = {
 };
 ```
 
-**可选属性**
+> 可选属性
 
 ```
 interface Person {
@@ -95,7 +110,7 @@ let tom: Person = {
 };
 ```
 
-**任意属性**
+> 任意属性
 
 ```
 interface Person {
@@ -110,7 +125,7 @@ let tom: Person = {
 };
 ```
 
-**只读**
+> 只读
 
 ```
 interface Person {
@@ -128,15 +143,39 @@ let tom: Person = {
 tom.id = 89757;
 ```
 
-> 数组类型
+### 数组类型
 
-**「类型 + 方括号」表示法**
-`let fibonacci: number[] = [1, 1, 2, 3, 5];`
+> 「类型 + 方括号」表示法
 
-**任意类型**
-`let list: any[] = ['Xcat Liu', 25, { website: 'http://xcatliu.com' }];`
+```
+let fibonacci: number[] = [1, 1, 2, 3, 5];
+```
 
-**类数组**
+相等
+
+```
+let fibonacci: Array<number> = [1, 1, 2, 3, 5];
+```
+
+一般将`Array<number>`的写法称之为**泛型**
+
+
+> 任意类型
+
+```
+let list: any[] = ['Xcat Liu', 25, { website: 'http://xcatliu.com' }];
+```
+
+> 元组
+
+**限定长度和类型，不能越界**
+
+```
+let list: [number, string] = [12,'shaw'];
+```
+
+
+> 类数组
 
 ```
 function sum() {
@@ -144,8 +183,75 @@ function sum() {
 }
 ```
 
+### 枚举
 
-> 函数类型
+枚举对应**数值**，将数字赋予意义
+
+```
+enum Color {
+    Red = 1,
+    Green,
+    Blue
+};
+
+let g: Color = Color.Green; // 2
+```
+
+反向查找，**知道数字**，**查找名称**
+
+```
+let gName: Color = Color[2]; // Green
+```
+
+### 任意
+
+在动态值或第三方库中，可能是多种类型的值，可以使用`any`类型来进行设置。
+
+```
+let list: any[] = [1,true,'free',{}];
+```
+
+### void
+
+只能赋值给`null`、`undefined`
+
+没有任何返回值
+
+```
+function say(): void{
+    console.log('hello world');
+}
+```
+
+### never
+
+它必须是不能返回、或者报错、无限循环
+
+```
+// 报错
+function err(message: string): never {
+    throw new Error(message);
+}
+
+// 无限循环
+function inifiniteLoop(): never {
+    while(true){
+    
+    }
+}
+```
+
+### 类型断言
+
+断言指定变量为某种类型
+
+```
+let strDe: any = 'I am shaw zhou';
+let strDeLen: number = (<string>strDe).length;
+let strDeLen1: number = (strDe as string).length;
+```
+
+### 函数类型
 
 **一个函数有输入和输出，要在 TypeScript 中对其进行约束，需要把输入和输出都考虑到**
 
@@ -224,7 +330,7 @@ function reverse(x: number | string): number | string {
 ```
 
 
-##类型断言
+## 类型断言
 **类型断言（Type Assertion）可以用来手动指定一个值的类型。**
 语法:
 <类型>值       或       值 as 类型
