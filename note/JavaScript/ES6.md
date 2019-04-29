@@ -185,9 +185,10 @@ console.log(map.values());
 Iterator就是这样一种机制，它是一种接口，为各种不同的数据结构提供统一的访问机制，任何数据结构只需要部署Iterator接口，就可以完成遍历操作，而且这种便利操作是**依次**处理该数据结构的所有成员
 
 Iterator遍历器的作用:
-- 为各种数据结构，提供一个统一的，简便的访问接口
-- 使得数据结构的成员能够按某种次序排列
-- ES6新增了遍历命令for..of循环，Iterator接口主要供for...of消费
+
+* 为各种数据结构，提供一个统一的，简便的访问接口
+* 使得数据结构的成员能够按某种次序排列
+* ES6新增了遍历命令for..of循环，Iterator接口主要供for...of消费
 
 
 > 手写Iterator接口
@@ -284,6 +285,7 @@ JS语言的传统方法是通过构造函数，定义并生成新对象，是一
 
 > es5中基于原型的写法
 
+```
 const Show = function(a,b){
 	this.a = a;
 	this.b = b;
@@ -300,9 +302,11 @@ Show.prototype = {
 
 const showmsg = new Show('hello','world');
 showmsg.print();
+```
 
 > es6中class写法
 
+```
 class Show{
 	consturucor(a,b){
 		this.a = a;
@@ -315,29 +319,30 @@ class Show{
 }
 
 const showmsg = new Show('hello','world');
+```
 
-1.Show中的constructor方法是构造方法，this关键字则代表实例对象。也就是说，es5的构造函数Show，对应es6的Show这个累的构造方法
+1. Show中的constructor方法是构造方法，this关键字则代表实例对象。也就是说，es5的构造函数Show，对应es6的Show这个类的构造方法
 
-2.Show这个类除了构造方法，还定义了一个print方法， 注意，定义"类"的方法时候，前面不需要加上function这个关键字，直接把函数定义放进去就可以了。另外，方法之间不需要用逗号分隔，加了会报错
+2. Show这个类除了构造方法，还定义了一个print方法， 注意，定义"类"的方法时候，前面不需要加上function这个关键字，直接把函数定义放进去就可以了。另外，方法之间不需要用逗号分隔，加了会报错
 
-3.构造函数的prototype属性，在es6的“类”上面继续存在:而且类的所有方法都定义在类的prototype属性上面。
+3. 构造函数的prototype属性，在es6的“类”上面继续存在:而且类的所有方法都定义在类的prototype属性上面。
 
-4.定义在类中的方法都是不可以枚举的
+4. 定义在类中的方法都是不可以枚举的
 
-5.constructor方法是类的默认方法，通过new命令生成对象实例时，自动调用该方法。一个类必须有constructor方法，如果没有显示定义，一个空的constructor方法会被默认添加
+5. constructor方法是类的默认方法，通过new命令生成对象实例时，自动调用该方法。一个类必须有constructor方法，如果没有显示定义，一个空的constructor方法会被默认添加
 
-6.生成类的实例对象的写法，与es5完全一样，也是使用new 命令。如果忘记加new，象函数一样调用class，将会报错
+6. 生成类的实例对象的写法，与es5完全一样，也是使用new 命令。如果忘记加new，象函数一样调用class，将会报错
 
 > class的继承等相关知识
 
-**extends** **static** **super**
+**extends** 、**static** 、**super**
 
 1.子类继承父类使用extend关键字
 2.为父类指定静态方法，使用static方法名字
 
-super:
-- 在构造函数中可以当一个函数来使用，相当于调用父类的构造函数
-- 在原型方法中，可以打你个对象来使用，相当于父类的原型对象，并且会自动绑定this到子类上
+* super:
+    * 在构造函数中可以当一个函数来使用，相当于调用父类的构造函数
+    * 在原型方法中，可以打你个对象来使用，相当于父类的原型对象，并且会自动绑定this到子类上
 
 ## Symbol
 

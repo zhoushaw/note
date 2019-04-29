@@ -80,69 +80,6 @@ tsc test.ts // 将会把tst.ts转变成test.js是文件
 **在typescript中没有定义类型将会自动为其匹配对应的类型**
 
 
-### 对象的类型——接口
-
-
-简单来说接口是对象的**描述**
-
-```
-interface Person {
-    name: string;
-    age: number;
-}
-
-let tom: Person = {
-    name: 'Tom',
-    age: 25
-};
-```
-
-> 可选属性
-
-```
-interface Person {
-    name: string;
-    age?: number;
-}
-
-let tom: Person = {
-    name: 'Tom'
-};
-```
-
-> 任意属性
-
-```
-interface Person {
-    name: string;
-    age?: number;
-    [propName: string]: any;
-}
-
-let tom: Person = {
-    name: 'Tom',
-    gender: 'male'
-};
-```
-
-> 只读
-
-```
-interface Person {
-    readonly id: number;
-    name: string;
-    age?: number;
-    [propName: string]: any;
-}
-
-let tom: Person = {
-    name: 'Tom',
-    gender: 'male'
-};
-
-tom.id = 89757;
-```
-
 ### 数组类型
 
 > 「类型 + 方括号」表示法
@@ -181,6 +118,25 @@ let list: [number, string] = [12,'shaw'];
 function sum() {
     let args: IArguments = arguments;
 }
+```
+
+> 数组只读
+
+```
+let arr: ReadonlyArray<number> = [1,2,3,4];
+arr[0] = 3;     // 编译过程中将发生error
+```
+
+> 索引
+
+```
+interface SquareConfig {
+    color?: string;
+    width?: number;
+    [propName: string]: any;
+}
+
+// 只要不是color、width属性限制类型，其他任意属性都可以
 ```
 
 ### 枚举
@@ -350,6 +306,323 @@ function getLength(something: string | number): number {
 }
 ```
 
+## 对象的类型——接口
+
+
+简单来说接口是对象的**描述**
+
+```
+interface Person {
+    name: string;
+    age: number;
+}
+
+let tom: Person = {
+    name: 'Tom',
+    age: 25
+};
+```
+
+> 可选属性
+
+```
+interface Person {
+    name: string;
+    age?: number;
+}
+
+let tom: Person = {
+    name: 'Tom'
+};
+```
+
+> 任意属性
+
+```
+interface Person {
+    name: string;
+    age?: number;
+    [propName: string]: any;
+}
+
+let tom: Person = {
+    name: 'Tom',
+    gender: 'male'
+};
+```
+
+> 只读
+
+```
+interface Person {
+    readonly id: number;
+    name: string;
+    age?: number;
+    [propName: string]: any;
+}
+
+let tom: Person = {
+    name: 'Tom',
+    gender: 'male'
+};
+
+tom.id = 89757;
+```
+
+> 索引签名
+
+```
+interface Square {
+    color: string,
+    width: number,
+    [propsName]: stirng
+}
+```
+
+> 继承
+
+```
+interface Shape {
+    color: string;
+}
+
+interface Square extends Shape {
+    sideLength: number;
+}
+```
+
+## 类接口定义
+
+功能定义：
+
+* 定义内容
+
+可以将类的接口定义分为：实例类型、静态部分类型。
+
+
+* 实例部分： `new` 实例化的类型
+* 静态部分： 普通方法
+
+> 静态部分
+
+```
+
+interface ClockInterface {
+    currentTime: Date
+    setTime(d: Date): string
+}
+
+class Clock implements ClockInterface {
+    currentTime: Date
+
+    setTime (day: Date) {
+        return 'hello world';
+    }
+}
+```
+
+> 实例部分
+
+```
+interface ClockConstructor {
+    new (hour: number, minute: number)
+}
+interface ClockInterface {
+    tick();
+}
+
+function createClock(ctor: ClockConstructor, hour: number, minute: number): ClockInterface {
+    return new ctor(hour, minute);
+}
+
+class DigitalClock implements ClockInterface {
+    constructor(h: number, m: number) { }
+    tick() {
+        console.log("beep beep");
+    }
+}
+
+let analog = createClock(DigitalClock, 7, 32);
+```
+
+```
+type Name = string;
+type NameResolver = () => string;
+type NameOrResolver = Name | NameResolver;
+function getName(n: NameOrResolver): Name {
+    if (typeof n === 'string') {
+        return n;
+    }
+    else {
+        return n();
+    }
+}
+
+```
+
+> 接口继承类
+
+接口继承类后，将会继承它的属性
+
+```
+class Control {
+    private state: string
+}
+
+interface ControlStruct extends Control {
+    sayHello()
+}
+
+// 正确
+class SubControl extends Control implements ControlStruct{
+    sayHello() {}
+}
+
+// 错误，未继承其state属性
+class SubControl implements ControlStruct{
+    sayHello() {}
+}
+```
+
+
+### 继承
+
+```
+class Animal {
+    move(distanceInMeters: number = 0) {
+        console.log(`Animal moved ${distanceInMeters}m.`);
+    }
+}
+
+class Dog extends Animal {
+    bark() {
+        console.log('Woof! Woof!');
+    }
+}
+
+const dog = new Dog();
+dog.bark();
+dog.move(10);
+dog.bark();
+```
+
+### 公共，私有与受保护的修饰符
+
+> public
+
+类的属性和方法默认使用`public`来声明属性和方法，表明**属性和方法是公共**的。可在类的**外部访问**
+
+> private
+
+当成员被标记成`private`时，它不能在声明它的外部访问，在**派生类**中也无法访问。
+
+```
+class Person {
+    private name: string
+    constructor(name) {
+        this.name = name;
+    }
+}
+
+let person = new Person('shaw');
+console.log(person.name); // 发生错误不能访问私有成员
+
+class Man extends Person{
+    constructor(name) {
+        super(name);
+    }
+    say () {
+        console.log(this.name) // 发生错误，派生类中不能访问基类的私有成员
+    }
+}
+```
+
+> protected
+
+`protected`**修饰符**与 `private`修饰符的**行为很相似**，但有一点不同， `protected`成员在**派生类**中仍然可以访问。例如：
+
+```
+class Person {
+    private name: string
+    constructor(name) {
+        this.name = name;
+    }
+}
+
+class Man extends Person{
+    constructor(name) {
+        super(name);
+    }
+    say () {
+        console.log(this.name) //shaw
+    }
+}
+let person = new Man('shaw');
+```
+
+### 存取器
+
+TypeScript支持对`getters/setters`来**截取对对象成员的访问**
+
+设置名称时检测用户是否密码正确
+
+```
+let passcode = "secret passcode";
+
+class Employee {
+    private _fullName: string;
+
+    get fullName(): string {
+        return this._fullName;
+    }
+
+    set fullName(newName: string) {
+        if (passcode && passcode == "secret passcode") {
+            this._fullName = newName;
+        }
+        else {
+            console.log("Error: Unauthorized update of employee!");
+        }
+    }
+}
+
+let employee = new Employee();
+employee.fullName = "Bob Smith";
+if (employee.fullName) {
+    alert(employee.fullName);
+}
+```
+
+### 静态属性
+
+上面所有**访问的属性**都是类的**实例成员**,下面要访问的是**类**上的属性，存在于类或可以称之为函数中的静态属性
+
+> 错误使用:
+
+```
+
+class Grid {
+    static origin = {};
+
+    say () {
+        console.log(this.origin) // 发生错误，origin成员是静态属性，不是实例属性，不可直接通过this访问
+    }
+}
+```
+
+> 正确使用:
+
+```
+
+class Grid {
+    static origin = {name: 'shaw'};
+
+    say () {
+        console.log(Grid.name) // {name: 'shaw'}
+    }
+}
+```
+
 ## 声明文件
 
 **假如我们想使用第三方库，比如 jQuery，我们通常这样获取一个 id 是 foo 的元素，但是在 TypeScript 中，我们并不知道 $ 或 jQuery 是什么东西**
@@ -404,22 +677,5 @@ document.addEventListener('click', function(e: MouseEvent) {
 });
 ```
 
-## 类型别名
-
-
-```
-type Name = string;
-type NameResolver = () => string;
-type NameOrResolver = Name | NameResolver;
-function getName(n: NameOrResolver): Name {
-    if (typeof n === 'string') {
-        return n;
-    }
-    else {
-        return n();
-    }
-}
-
-```
 
 
