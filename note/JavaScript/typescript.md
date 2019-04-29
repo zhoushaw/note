@@ -241,16 +241,6 @@ function inifiniteLoop(): never {
 }
 ```
 
-### 类型断言
-
-断言指定变量为某种类型
-
-```
-let strDe: any = 'I am shaw zhou';
-let strDeLen: number = (<string>strDe).length;
-let strDeLen1: number = (strDe as string).length;
-```
-
 ### 函数类型
 
 **一个函数有输入和输出，要在 TypeScript 中对其进行约束，需要把输入和输出都考虑到**
@@ -330,11 +320,12 @@ function reverse(x: number | string): number | string {
 ```
 
 
-## 类型断言
+### 类型断言
 
 **类型断言（Type Assertion）可以用来手动指定一个值的类型。**
+
 语法:
-<类型>值       或       值 as 类型
+`<类型>`+ `value`    或       `value` as `类型`
 
 > 为何需要类型断言
 
