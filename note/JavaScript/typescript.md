@@ -266,15 +266,186 @@ let tom = buildName('Tom');
 重载允许一个函数接受不同数量或类型的参数时，作出不同的处理
 
 ```
-function reverse(x: number | string): number | string {
-    if (typeof x === 'number') {
-        return Number(x.toString().split('').reverse().join(''));
-    } else if (typeof x === 'string') {
-        return x.split('').reverse().join('');
+let suits = ["hearts", "spades", "clubs", "diamonds"];
+
+function pickCard(x: {suit: string; card: number; }[]): number;
+function pickCard(x: number): {suit: string; card: number; };
+function pickCard(x): any {
+    // Check to see if we're working with an object/array
+    // if so, they gave us the deck and we'll pick the card
+    if (typeof x == "object") {
+        let pickedCard = Math.floor(Math.random() * x.length);
+        return pickedCard;
+    }
+    // Otherwise just let them pick the card
+    else if (typeof x == "number") {
+        let pickedSuit = Math.floor(x / 13);
+        return { suit: suits[pickedSuit], card: x % 13 };
+    }
+}
+
+```
+
+> this
+
+**this: Deck**，指定this的对外接口
+
+```
+interface Card {
+    suit: string;
+    card: number;
+}
+interface Deck {
+    suits: string[];
+    cards: number[];
+    createCardPicker(this: Deck): () => Card;
+}
+let deck: Deck = {
+    suits: ["hearts", "spades", "clubs", "diamonds"],
+    cards: Array(52),
+    createCardPicker: function(this: Deck) {
+        return () => {
+            let pickedCard = Math.floor(Math.random() * 52);
+            let pickedSuit = Math.floor(pickedCard / 13);
+
+            return {suit: this.suits[pickedSuit], card: pickedCard % 13};
+        }
     }
 }
 ```
 
+> 泛型
+
+使用泛型来创建可重用的组件，一个组件可以支持多种类型的数据。 这样用户就可以以自己的数据类型来使用组件
+
+场景一: 一个函数传参类型必须与**返回类型相同**，但又不指定**某种特定的类型**
+
+```
+function print<T>(arg: T): T {
+    return arg;
+}
+```
+
+两种使用方式：
+
+* 传入所有的参数，包含类型参数
+    * `let output = print<string>("myString"); `
+* 类型推论,编译器会根据传入的参数自动地帮助我们确定T的类型
+    * `let output = print("myString"); `
+
+场景二: **泛型部分变量，数组泛型**
+
+```
+function loggerLength<T>(arg: T[]): T[] {
+    console.log(arg.length);
+    return arg;
+}
+```
+
+两种创建方式：
+
+* `function loggerLength<T>(arg: T[]): T[] {}`
+* `function loggerLength<T>(arg: Array<T>): Array<T> {}`
+
+场景三: **泛型接口**
+
+两种定义方式：
+
+```
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+let myIdentity: {<T>(arg: T): T} = identity;
+```
+
+相等：
+
+```
+interface GenericIdentityFn {
+    <T>(arg: T): T;
+}
+
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+let myIdentity: GenericIdentityFn = identity;
+
+// 可以指定泛型类型
+
+interface GenericIdentityFn<T> {
+    (arg: T): T;
+}
+
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+let myIdentity: GenericIdentityFn<number> = identity;
+```
+
+> 泛型约束
+
+约束泛型取值,指定泛型存在指定变量
+
+```
+interface Lengthwise {
+    length: number;
+}
+function loggingIdentity<T extends Lengthwise>(arg: T): T {
+    console.log(arg.length);
+    return arg;
+}
+```
+
+案例二：获取对象指定`key`值
+
+```
+function getProperty <T, K extends keyof T>(obj: T,key: K) {
+    return obj[key];
+}
+let x = {a: '1', b: 'hello world'};
+getProperty(x, 'a'); // 成功
+getProperty(x, 'ss'); // 编译失败
+```
+
+### 类型保护
+
+```
+interface Bird {
+    fly();
+    layEggs();
+}
+
+interface Fish {
+    swim();
+    layEggs();
+}
+
+function getSmallPet(): Fish | Bird {
+    // ...
+}
+
+let pet = getSmallPet();
+pet.layEggs(); // okay
+pet.swim();    // errors
+
+if (pet.swim) { // errors
+    pet.swim();
+}
+```
+
+> 定义类型保护
+
+```
+function isFish(pet: Fish | Bird): pet is Fish {
+    return (<Fish>pet).swim !== undefined;
+}
+if (isFish(pet)) {
+    pet.swim(); // okay
+}
+```
 
 ### 类型断言
 
@@ -622,6 +793,74 @@ class Grid {
     }
 }
 ```
+### 抽象类
+
+特点：
+
+* 抽象类做为其它派生类的基类使用。 它们一般不会直接被实例化
+* 抽象类中的抽象方法不包含具体实现并且必须在派生类中实现
+
+```
+abstract class Department {
+
+    constructor(public name: string) {
+    }
+
+    printName(): void {
+        console.log('Department name: ' + this.name);
+    }
+
+    abstract printMeeting(): void; // 必须在派生类中实现
+}
+
+class AccountingDepartment extends Department {
+
+    constructor() {
+        super('Accounting and Auditing'); // 在派生类的构造函数中必须调用 super()
+    }
+
+    printMeeting(): void {
+        console.log('The Accounting Department meets each Monday at 10am.');
+    }
+
+    generateReports(): void {
+        console.log('Generating accounting reports...');
+    }
+}
+
+let department: Department; // 允许创建一个对抽象类型的引用
+department = new Department(); // 错误: 不能创建一个抽象类的实例
+department = new AccountingDepartment(); // 允许对一个抽象子类进行实例化和赋值
+department.printName();
+department.printMeeting();
+department.generateReports(); // 错误: 方法在声明的抽象类中不存在
+```
+
+### 高级技巧
+
+> 原有类功能修改
+
+```
+class Greeter {
+    static standardGreeting = "Hello, there";
+    greet() {
+        console.log(Greeter.standardGreeting);
+    }
+}
+```
+
+### 泛型类
+
+```
+class GenericNumber<T> {
+    zeroValue: T;
+    add: (x: T, y: T) => T;
+}
+
+let myGenericNumber = new GenericNumber<number>();
+myGenericNumber.zeroValue = 0;
+myGenericNumber.add = function(x, y) { return x + y; };
+```
 
 ## 声明文件
 
@@ -676,6 +915,7 @@ document.addEventListener('click', function(e: MouseEvent) {
   // Do something
 });
 ```
+
 
 
 
