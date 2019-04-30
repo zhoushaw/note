@@ -71,3 +71,12 @@ npm link [<@scope>/]<pkg>[@<version>]
 npm unlink
 ```
 
+## npm包发布
+
+* 首先在npm网站上注册一个账号，这个账号之后会用到。
+* npm网站地址：https://www.npmjs.com/
+* npm网站注册地址：https://www.npmjs.com/signup
+* `npm login`，并输入账号密码登录
+* `npm init`项目初始化完成后即可发布
+
+<p class="tip">如果已经登录其他的npm账号，使用：`npm logout`退出登录</p>
