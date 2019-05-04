@@ -1,3 +1,24 @@
+## 注释规范
+
+```
+/**
+ * 
+ * @method 方法名
+ * @for 所属类名
+ * @descript 函数功能简述、具体描述一些细节
+ *
+ * @param    {参数类型}参数名 参数说明
+ * @param    {string}  address     地址
+ * @param    {array}   com         商品数组
+ * @param    {string}  pay_status  支付方式
+ * @returns  {返回值类型} 返回值说明
+ *
+ * @date     2019-05-6
+ * @author   sushi<sushi@mogu.com>
+ */
+```
+
+
 ## 起步
 
 > compile
