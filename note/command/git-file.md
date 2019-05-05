@@ -124,6 +124,11 @@ git rm	<file.name>			会把对应暂存区的文件删除(必须是在工作区�
 git rm	-f <file.name>		会把暂存区和工作区的文件一起删除掉,
 git rm --cached <file.name>	会删除暂存区的文件
 
+### 删除远程分支
+
+```
+git push origin :`<branch>`
+```
 
 ## 将文件同步到远程仓库
 
