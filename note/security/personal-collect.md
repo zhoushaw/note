@@ -31,6 +31,9 @@
 
 ### 工具
 
+* [Keynote，PPT制作](www.ifanr.com/app/1132202)
+* [Keynote，高逼格工具](https://blog.csdn.net/wangyiyungw/article/details/80594219)
+
 * [压缩工具](https://extract.me/cn/)
 * [获取小程序源码](https://zhuanlan.zhihu.com/p/37667537)
 * [反编译微信小程序$gwx is not defined报错解决方法](https://www.yuchunlai.com/index.php/archives/33/)
@@ -49,7 +52,9 @@
 * [高效率地学习前端](https://juejin.im/entry/5852340561ff4b0063a44ef6)
 * [网盘搜索](www.pansoso.com)
 
+## egret
 
+* [egret store](http://store.egret.com/)
 
 ## 后端
 
@@ -58,6 +63,8 @@
 * [MySQL常用操作](https://blog.csdn.net/qq_21397217/article/details/51656783#%E6%96%B0%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93) | 
 * [MySQL笔记](https://zhuanlan.zhihu.com/p/31114715)
 * [据库设计原则](http://wiki.mogujie.org/pages/viewpage.action?pageId=68917403)
+* [Try Puppeteer](https://try-puppeteer.appspot.com)
+* [Puppeteer](https://pptr.dev)
 
 
 ## google应用
