@@ -9,6 +9,12 @@
 * [FreeCodeCamp](https://www.freecodecamp.cn/)
 * [JS Bin](https://jsbin.com/?html,css,js,console,output)
 * [JSFiddle](https://jsfiddle.net)
+* [codeSandbox](https://codesandbox.io)
+
+### 画图
+
+
+* [流程图](https://www.processon.com/diagrams)
 
 ### Vue
 
@@ -34,6 +40,8 @@
 * [Keynote，PPT制作](www.ifanr.com/app/1132202)
 * [Keynote，高逼格工具](https://blog.csdn.net/wangyiyungw/article/details/80594219)
 
+* [在线ps工具](https://ps.gaoding.com/#/)
+* [fotor图片处理](https://www.fotor.com/cn/)
 * [压缩工具](https://extract.me/cn/)
 * [获取小程序源码](https://zhuanlan.zhihu.com/p/37667537)
 * [反编译微信小程序$gwx is not defined报错解决方法](https://www.yuchunlai.com/index.php/archives/33/)
@@ -65,9 +73,12 @@
 * [据库设计原则](http://wiki.mogujie.org/pages/viewpage.action?pageId=68917403)
 * [Try Puppeteer](https://try-puppeteer.appspot.com)
 * [Puppeteer](https://pptr.dev)
-
+* [puppeteer 无法运行](https://blog.shadowy.me/2018/02/21/google-puppeteer-plugin-develop/)
+* [如何利用 Puppeteer 爬取数据](https://gitbook.cn/books/5aa4835a987ed32df6a2123c/index.html)
 
 ## google应用
 
 * [Textfree Web](https://textfree.us/#/conversation/16146954741)
 * [google环聊](https://hangouts.google.com)
+
+
