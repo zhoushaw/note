@@ -56,18 +56,19 @@ master,
 
 ## 与远程仓库建立连接
 
-建立连接
+```
+#建立连接
 git remote  add origin url
 
-修改链接
+#修改链接
 git remote set-url origin url
 
-与远程仓库建立连接
+#与远程仓库建立连接
 git push -u origin master
 
-同步远程仓库代码
+#同步远程仓库代码
 git fetch origin
-
+```
 
 ### 状态转换查看
 
