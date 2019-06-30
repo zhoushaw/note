@@ -294,3 +294,10 @@ git push origin  v1.3
 `--squash` 选项用于压缩多个“无用”的 `commit` 为一个 `commit`，效果类似下图：
 
 <img src="../../asset/img/git-merge-squash.png" width="200" />
+
+
+## 刪除git緩存
+
+```
+git rm -r --cached .
+```
