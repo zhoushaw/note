@@ -40,6 +40,7 @@
 * [Keynote，PPT制作](www.ifanr.com/app/1132202)
 * [Keynote，高逼格工具](https://blog.csdn.net/wangyiyungw/article/details/80594219)
 
+* [自动化测试工具](https://app.checklyhq.com/)
 * [在线ps工具](https://ps.gaoding.com/#/)
 * [fotor图片处理](https://www.fotor.com/cn/)
 * [压缩工具](https://extract.me/cn/)
