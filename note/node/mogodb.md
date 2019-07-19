@@ -86,10 +86,6 @@ db.people.count({name:{$in:['zx','li']});	:找到有zx，li的行
 db.people.update({naem:'ls',{$set{"address.provice":"jiangxi"}}});
 
 
-
-
-
-
 ### 删除:
 
 db.people.remove({});		:删除people的所有数据
@@ -116,8 +112,7 @@ db.student.update({},{$inc:{age:2}});	:所有年龄的基础上加2
 
 ## 表操作
 
-show collections
-
+`show collections`
 
 
 ## 存储过程
@@ -149,6 +144,8 @@ db.dormitory.find().sort({name:-1});按照name来降序
 
 
 分组:
+
+```
 db.dormitory.group({
 	key:{type:true},//可以联合分组，增加多个条件	
 	initial:{count:0,names:[]},//每次进来初始化这两个参数，
@@ -159,9 +156,11 @@ db.dormitory.group({
 	},
 	condition:{type:'male'}
 });
-key:分组的关键词
-initial:进行操作的数据初始化
-reduce进行的操作
+
+# key:分组的关键词
+# initial:进行操作的数据初始化
+# reduce进行的操作
+
 db.dormitory.group({
 	key:{type:true},
 	initial:{count:0,names:[]},
@@ -172,13 +171,16 @@ db.dormitory.group({
 	},
 	condition:{type:'male'}
 });
+```
 
 ## 创建索引
 
+```
 // 将名字当做唯一索引，使用索引使用空间去换取时间。索引创建完成之后，表将根据索引进行排序
 db.user.createIndex({name:1},{unique:1});
 
 // 删除索引
 db.user.dropIndex({name:1})
+```
 
 
