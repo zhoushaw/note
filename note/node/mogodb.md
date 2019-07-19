@@ -2,29 +2,49 @@
 
 [菜鸟教程](http://www.runoob.com/mongodb/mongodb-osx-install.html)
 
-## 数据库进入
-mongod --dbpath E:\mongodb\db -directoryperdb
+## 环境变量配置
+
+```
+# 系统级别
+/etc/profile
+/etc/paths 
+
+# 用户级别
+~/.bash_profile 
+~/.bash_login 
+~/.profile 
+
+~/.bashrc
+```
+
+> 添加变量
+
+```
+export PATH=/usr/local/mongodb/bin:$PATH
+```
+
+## 启动数据库
+
+* `sudo mongod`
+    * `--logpath <log-path>`: 指定日志地址，一般与数据库地址存放在一起
+    * `--fork`: 后台启动，必须与`--logpath`一起使用
 
 ## 基本操作
 
 进入使用:
-- mongo 进入数据库操作
-- show dbs :展示所有的数据库
-- use ‘local’:使用哪一个数据库
+- `mongo` 进入数据库操作
+    - `show dbs` :展示所有的数据库
+    - `use ‘local’`:使用哪一个数据库
 
-## ObjectId
-
-mongodb中提供了Id
-
-分别组成
- Time/Machine/PID/INC
 
 ### 插入操作
 
-db.people.insert({name:'leo',age:'23'});	:插入数据
+```
+db.people.insert({name:'leo',age:'23'});	#插入数据
 ==
 var model ={name:'leo',age:'23'}
 db.people.insert(model);
+```
 
 ### 查找:(支持正则表达式)
 
@@ -45,13 +65,13 @@ db.student.find({age:{$lt:20}});	:小于20
 db.student.find({age:{$lte:20}});	:小于等于20
 db.student.find({age:{$ne:20}});	:不等于20
 
-$gt : >
-$lt : <
-$gte: >=
-$lte: <=
-$ne : !=、<>
-$in : in
-$nin: not in
+* $gt : >
+* $lt : <
+* $gte: >=
+* $lte: <=
+* $ne : !=、<>
+* $in : in
+* $nin: not in
 
 
 db.people.find().limit(2);  		:找到前两条，找到后面所有的
