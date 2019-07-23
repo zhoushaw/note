@@ -25,6 +25,7 @@ export PATH=/usr/local/mongodb/bin:$PATH
 
 ## 启动数据库
 
+* `sudo mongod --logpath /data/db/mongodb.log --fork`
 * `sudo mongod`
     * `--logpath <log-path>`: 指定日志地址，一般与数据库地址存放在一起
     * `--fork`: 后台启动，必须与`--logpath`一起使用
@@ -58,12 +59,13 @@ db.people.insert(model);
 - db.people.find({"name":{$in;["zs","ls"]});	:找到name里面有zs和li的数据
 - db.people.find({"name":{$nin;["zs","ls"]});	:找到name里面不是zs和li的数据
 
-
-db.student.find({age:{$gt:20}});	:大于20
-db.student.find({age:{$gte:20}});	:大于等于20
-db.student.find({age:{$lt:20}});	:小于20
-db.student.find({age:{$lte:20}});	:小于等于20
-db.student.find({age:{$ne:20}});	:不等于20
+```
+db.student.find({age:{$gt:20}});	//大于20
+db.student.find({age:{$gte:20}});	//大于等于20
+db.student.find({age:{$lt:20}});	//小于20
+db.student.find({age:{$lte:20}});	//小于等于20
+db.student.find({age:{$ne:20}});	//不等于20
+```
 
 * $gt : >
 * $lt : <
@@ -73,7 +75,7 @@ db.student.find({age:{$ne:20}});	:不等于20
 * $in : in
 * $nin: not in
 
-
+```
 db.people.find().limit(2);  		:找到前两条，找到后面所有的
 db.people.find().skip(2).limit(1);	:跳过前两条，往后找一条
 
@@ -84,13 +86,15 @@ db.people.find({},{_id:0});			:id不要，其他都要
 db.people.count({name:{$in:['zx','li']});	:找到有zx，li的行
 
 db.people.update({naem:'ls',{$set{"address.provice":"jiangxi"}}});
-
+```
 
 ### 删除:
 
+```
 db.people.remove({});		:删除people的所有数据
 
 db.people.drop();//删除这张表了
+```
 
 ### 修改
 
@@ -100,7 +104,7 @@ db.student.update({},{},false,false);
 第三个默认false，true没有找到修改的数据，插入
 第四个数据:默认false，找到后只修改一条，true修改所有的
 
-
+```
 db.student.update({name:'ls'},{$set:{age:'22'}});	:只修改我们想修改的
 
 db.student.update({name:'ls'},{age:'22'});	:使用后只留下了要改的数据
@@ -108,7 +112,13 @@ db.student.update({name:'ls'},{age:'22'});	:使用后只留下了要改的数据
 db.student.update({},{$set:{age:'22'}});	:所有数据年龄变成22
 
 db.student.update({},{$inc:{age:2}});	:所有年龄的基础上加2
+```
 
+> 更改嵌套对象
+
+```
+db.getCollection('hosts').update({'owner.nickName':'乾巧'},{$set:{'owner.nickName': '苏轼'}},{ multi: true })
+```
 
 ## 表操作
 
@@ -117,12 +127,15 @@ db.student.update({},{$inc:{age:2}});	:所有年龄的基础上加2
 
 ## 存储过程
 
+```
 db.system.js		:芒果数据库中有这样的一张表，用来存放js函数
 
 db.system.js.find();	:查找当前的存储过程的方式
 
 
 db.student.find().explain();
+```
+
 可以查看当前查找的计划
 
 
