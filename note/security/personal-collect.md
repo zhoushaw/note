@@ -61,7 +61,7 @@
 * [gitbook](https://legacy.gitbook.com/explore)
 * [书栈网](https://www.bookstack.cn)
 * [高效率地学习前端](https://juejin.im/entry/5852340561ff4b0063a44ef6)
-* [网盘搜索](www.pansoso.com)
+* [网盘搜索](http://www.pansoso.com)
 
 ## egret
 
