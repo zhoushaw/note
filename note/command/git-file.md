@@ -119,6 +119,8 @@ git commit --amend
 
 git reset  --hard (commit的哈希值) 可以退回到对应的commit中去
 
+git revert commit哈希值  放弃指定commit
+
 ### 删除
 
 git rm	<file.name>			会把对应暂存区的文件删除(必须是在工作区文件被删除之后的情况下才可以进行文件的删除操作)
