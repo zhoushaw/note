@@ -42,6 +42,12 @@
 
 * [Webpack config tool](https://webpack.jakoblind.no)
 
+
+## 下载资源
+
+* [xclient.info](https://xclient.info/)
+* [麦氪派](https://www.waitsun.com/)
+
 ## 文档梳理
 
 ### 工具
@@ -64,6 +70,7 @@
 
 ### book平台
 
+* [知识检索](https://devhints.io/)
 * [readfree](https://readfree.me)
 * [gitbook](https://legacy.gitbook.com/explore)
 * [书栈网](https://www.bookstack.cn)
